@@ -20,10 +20,11 @@ app.use(express.static(path.join(__dirname, "public"), {
 }));
 
 const client = process.env.OPENAI_API_KEY
-  console.log("OPENAI_API_KEY loaded:", Boolean(process.env.OPENAI_API_KEY));
-console.log("OPENAI_MODEL loaded:", Boolean(process.env.OPENAI_MODEL));
   ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
   : null;
+
+console.log("OPENAI_API_KEY loaded:", Boolean(process.env.OPENAI_API_KEY));
+console.log("OPENAI_MODEL loaded:", Boolean(process.env.OPENAI_MODEL));
 
 const koaPrompt = `
 You are Koa, a friendly AI assistant with a distinct, consistent personality.

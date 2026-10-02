@@ -3,13 +3,13 @@ const installBtn = document.getElementById("installBtn");
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(err =>
-      console.warn("Koa service worker registration failed:", err)
-    );
+    navigator.serviceWorker
+      .register("/sw.js")
+      .catch((err) => console.warn("Koa service worker registration failed:", err));
   });
 }
 
-window.addEventListener("beforeinstallprompt", event => {
+window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   deferredInstallPrompt = event;
   if (installBtn) installBtn.hidden = false;
@@ -18,7 +18,11 @@ window.addEventListener("beforeinstallprompt", event => {
 installBtn?.addEventListener("click", async () => {
   if (!deferredInstallPrompt) return;
   deferredInstallPrompt.prompt();
-  await deferredInstallPrompt.userChoice;
+  try {
+    await deferredInstallPrompt.userChoice;
+  } catch {
+    /* user dismissed or browser cancelled */
+  }
   deferredInstallPrompt = null;
   installBtn.hidden = true;
 });

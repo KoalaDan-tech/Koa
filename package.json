@@ -1,0 +1,17 @@
+{
+  "name": "koa-standalone-ai",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Koa standalone AI PWA using a local open-weight model through Transformers.js.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^4.3.0",
+    "express": "^5.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

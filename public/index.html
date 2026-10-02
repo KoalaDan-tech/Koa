@@ -17,24 +17,30 @@
 </head>
 <body>
   <div class="app">
-    <aside class="sidebar">
+    <aside class="sidebar" aria-label="Mood panel">
       <div class="brand">
-        <div class="logo">K</div>
-        <div><strong>Koa</strong><span>AI with a mood</span></div>
+        <div class="logo" aria-hidden="true">K</div>
+        <div>
+          <strong>Koa</strong>
+          <span>AI with a mood</span>
+        </div>
       </div>
 
       <div class="mood-card">
-        <div class="mood-top"><span>Current mood</span><span id="intensity">65%</span></div>
-        <div class="big-emoji" id="moodEmoji">😊</div>
+        <div class="mood-top">
+          <span>Current mood</span>
+          <span id="intensity">65%</span>
+        </div>
+        <div class="big-emoji" id="moodEmoji" aria-hidden="true">😊</div>
         <h2 id="moodName">Happy</h2>
         <p id="moodDescription">Warm, upbeat and ready to help.</p>
-        <div class="meter"><div id="meterFill"></div></div>
+        <div class="meter" aria-hidden="true"><div id="meterFill"></div></div>
       </div>
 
-      <div class="emotion-list" id="emotionList"></div>
+      <div class="emotion-list" id="emotionList" role="list" aria-label="Moods"></div>
 
       <div class="sidebar-note">
-        <span>🌿</span>
+        <span aria-hidden="true">🌿</span>
         Koa's mood changes gradually with the conversation.
       </div>
     </aside>
@@ -42,29 +48,33 @@
     <main class="chat">
       <header class="chat-header">
         <div>
-          <div class="status"><span class="dot"></span> Online</div>
+          <div class="status"><span class="dot" aria-hidden="true"></span> Online</div>
           <h1>Koa</h1>
           <p>Ask me anything.</p>
         </div>
-        <div class="header-actions"><button id="installBtn" class="ghost install" hidden>Install Koa</button><button id="clearBtn" class="ghost">New chat</button></div>
+        <div class="header-actions">
+          <button id="installBtn" class="ghost install" type="button" hidden>Install Koa</button>
+          <button id="clearBtn" class="ghost" type="button">New chat</button>
+        </div>
       </header>
 
-      <section id="messages" class="messages">
+      <section id="messages" class="messages" aria-label="Conversation" aria-live="polite">
         <div class="welcome">
-          <div class="welcome-emoji">🌿</div>
+          <div class="welcome-emoji" aria-hidden="true">🌿</div>
           <h2>Hey, I'm Koa.</h2>
           <p>A curious little AI with six moods. What's on your mind?</p>
         </div>
       </section>
 
       <form id="chatForm" class="composer">
-        <textarea id="input" rows="1" placeholder="Message Koa..." autocomplete="off"></textarea>
+        <label class="visually-hidden" for="input">Message Koa</label>
+        <textarea id="input" rows="1" placeholder="Message Koa..." autocomplete="off" enterkeyhint="send"></textarea>
         <button id="sendBtn" type="submit" aria-label="Send">↑</button>
       </form>
       <p class="hint">Enter to send · Shift+Enter for a new line</p>
     </main>
   </div>
-  <script src="/app.js"></script>
-  <script src="/pwa.js"></script>
+  <script src="/app.js" defer></script>
+  <script src="/pwa.js" defer></script>
 </body>
 </html>
